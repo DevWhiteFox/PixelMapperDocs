@@ -37,7 +37,7 @@ The tool is divided into three sections:
 
 #### **Toolbar**
 
-![Toolbar](image_of_toolbar)
+![Toolbar](GridEditorToolbar.png)
 
 - **Color Selector**: Choose the pen color and see a preview of the selected color.
 - **Clear Grid**: Reset the grid to the default color (White).
@@ -54,7 +54,7 @@ The grid is the main workspace where you view and draw pixels. When using the **
 
 #### **Inspector**
 
-![Inspector](image_of_inspector)
+![Inspector](InspectAPixel.gif)
 
 The inspector panel shows the true color of the pixel regardless of any RGB channel filters applied, an editable hexadecimal color value, and the pixel's coordinates.
 
