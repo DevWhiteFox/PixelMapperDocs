@@ -10,11 +10,11 @@ This will launch a wizard where you'll name the main asset and the first sub-ass
 
 ## **Managing Assets**
 
-![PixelMaps Inspector](image_of_pixelmaps_inspector)
+![CreateNewSubLayer](CreateNewSubLayer.gif)
 
 From here, you can create a new layer named "Untitled".
 
-![PixelLayer Inspector](image_of_pixellayer_inspector)
+![RenameSubLayer](RenameSubLayer.gif)
 
 To rename a layer, select the sub-asset, change its name in the inspector by editing the 'Name' field, and click 'Rename'. The sub-asset will be selected immediately after its creation.
 
@@ -26,14 +26,14 @@ There’s also a button for quick access to the last layer you opened.
 
 ## **Using the Tool**
 
-![Tabs](image_of_tabs)
+![Tabs](TabsOfTheTool.png)
 
 The tool is divided into three sections:
-- **Pixel Editor**: View and edit the grid.
+- **Grid Editor**: View and edit the grid.
 - **Color2Object**: Associate pixels with values of a selected type across the grid.
 - **Settings**: Configure the type associated with the pixel and specify which RGB channels to use.
 
-### **Pixel Editor**
+### **Grid Editor**
 
 #### **Toolbar**
 
@@ -48,7 +48,7 @@ The tool is divided into three sections:
 
 #### **Grid**
 
-![Grid](image_of_grid)
+![Grid](GridEditor.png)
 
 The grid is the main workspace where you view and draw pixels. When using the **Inspect** tool, the selected pixel is highlighted with a contrasting border.
 
@@ -60,13 +60,19 @@ The inspector panel shows the true color of the pixel regardless of any RGB chan
 
 ### **Color2Object**
 
-![Color2Object](image_of_color2object)
+#### **Relation Color-Interger**
+
+![Color2Object](Color2ObjectWithInteger.png)
+
+#### **Relation Color-Scriptable**
+
+![Color2ObjectScriptable](Color2ObjectWithGenericScriptableObject.png)
 
 In this panel, you can associate pixels with values of a selected type for the entire grid. All colors in the grid are included.
 
 ### **Settings**
 
-![Settings](image_of_settings)
+![Settings](Settings.png)
 
 In the settings panel, you define the type associated with the pixel.
 
