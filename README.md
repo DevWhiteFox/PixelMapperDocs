@@ -24,7 +24,7 @@ You'll see a list of buttons with the names of the sub-assets. Click on one to o
 
 There’s also a button for quick access to the last layer you opened.
 
-## **Using the Tool**
+## **Description of the Tool**
 
 ![Tabs](TabsOfTheTool.png)
 
@@ -79,3 +79,43 @@ In the settings panel, you define the type associated with the pixel.
 #### **RGB Channels**
 
 There are three toggles to include or exclude RGB channels in pixel representation. For example, turning off the Red channel will display RGB(1f, 1f, 0.5f) as RGB(0f, 1f, 0.5f). This affects representation and association only; the actual pixel color remains unchanged for data purposes.
+
+## How use GridEditor
+
+### Color Selection
+
+![DrawColorAndPreview](DrawColorAndPreview.png)
+
+The color can be set by editing the RGB channels in **Draw Color** and look in **Color Preview** to know what color will be used.
+
+### Tools
+
+![PaintToolSelected](PaintToolSelected.png)
+
+A collection of tool used on the grid
+
+#### Paint Tool
+
+With this tool you can paint on the grid.
+
+To Paint click/drag with Left Mouse Button and erase with Right Mouse Button.
+
+#### Inspect
+
+![ExampleInspectorWithNotes](ExampleInspectorWithNotes.png)
+
+With this tool you can click on a pixel in the grid to view details about the selected pixel.
+
+First we see the *real* color ignores the disabled channels in the settings, this is because the *real* color takes the color values ​​of the active channel plus the disabled channel set by the inspector.
+
+Next we can see an rgb field where the only editable values ​​are that of the deactivated channel, this can be used as extra data together with the selected type.
+
+Same thing can be done with the hexadecimal value of the color that allow fast copy paste if needed.
+
+Lastly we can see coordinate of the pixel in the grid as (X,Y)
+
+#### Picking
+
+![PickingAPixel](PickingAPixel.gif)
+
+With this tool you can pick the color of the pixel selected and traspose it to **Draw Color**.
