@@ -2,7 +2,33 @@
 
 This guide covers the Pixel Mapper, a tool for mapping pixel values to a data types. The Pixel Mapper allows for the creation of complex setups using a grid layout.
 
+## **Index**
+
+1. [Getting Started](#getting-started)
+2. [Managing Assets](#managing-assets)
+3. [Description of the Tool](#description-of-the-tool)
+    - [Grid Editor](#grid-editor)
+        - [Toolbar](#toolbar)
+        - [Grid](#grid)
+        - [Inspector](#inspector)
+    - [Color2Object](#color2object)
+        - [Relation Color-Integer](#relation-color-integer)
+        - [Relation Color-Scriptable](#relation-color-scriptable)
+    - [Settings](#settings)
+        - [RGB Channels](#rgb-channels)
+4. [How to Use Grid Editor](#how-to-use-grid-editor)
+    - [Color Selection](#color-selection)
+    - [Tools](#tools)
+        - [Paint Tool](#paint-tool)
+        - [Inspect](#inspect)
+        - [Picking](#picking)
+
+
 ## **Getting Started**
+
+Copy this Git repository URL of the plugin: [PixelMapper](https://gitlab.com/davide.balan.official/pixelmapper.git)
+
+In the Unity window, go to "Assets" -> "Import Package" -> "Custom Package" and paste the Git repository URL to import the plugin.
 
 To begin using the Pixel Mapper, you need to create a new Pixel Mapper object. In the 'Assets' panel or by right-clicking in the inspector, select 'Create > MatrixMapData'.
 
@@ -60,7 +86,7 @@ The inspector panel shows the true color of the pixel regardless of any RGB chan
 
 ### **Color2Object**
 
-#### **Relation Color-Interger**
+#### **Relation Color-Integer**
 
 ![Color2Object](Color2ObjectWithInteger.png)
 
@@ -80,7 +106,7 @@ In the settings panel, you define the type associated with the pixel.
 
 There are three toggles to include or exclude RGB channels in pixel representation. For example, turning off the Red channel will display RGB(1f, 1f, 0.5f) as RGB(0f, 1f, 0.5f). This affects representation and association only; the actual pixel color remains unchanged for data purposes.
 
-## How use GridEditor
+## How to use grid editor
 
 ### Color Selection
 
