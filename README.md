@@ -90,7 +90,7 @@ The color can be set by editing the RGB channels in **Draw Color** and look in *
 
 ### Tools
 
-![PaintToolSelected](PaintToolSelected.png)
+![GridEditorTools](GridEditorTools.png)
 
 A collection of tool used on the grid
 
@@ -102,7 +102,7 @@ To Paint click/drag with Left Mouse Button and erase with Right Mouse Button.
 
 #### Inspect
 
-![ExampleInspectorWithNotes](ExampleInspectorWithNotes.png)
+![GridEditorInspector](GridEditorInspector.png)
 
 With this tool you can click on a pixel in the grid to view details about the selected pixel.
 
