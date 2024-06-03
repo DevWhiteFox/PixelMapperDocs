@@ -94,11 +94,7 @@ In this panel, you can associate pixels with values of a selected type for the e
 
 ### **Settings**
 
-In the settings panel, you define the type associated with the pixel.
-
-#### **RGB Channels**
-
-There are three toggles to include or exclude RGB channels in pixel representation. For example, turning off the Red channel will display RGB(1f, 1f, 0.5f) as RGB(0f, 1f, 0.5f). This affects representation and association only; the actual pixel color remains unchanged for data purposes.
+There are some settings that can change the behaviour and rappresentation of the tool.
 
 ![Settings](Settings.png)
 
