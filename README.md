@@ -2,36 +2,6 @@
 
 This guide covers the Pixel Mapper, a tool for mapping pixel values to data types. The Pixel Mapper allows for the creation of complex setups using a grid layout.
 
-## **🗂️ Index**
-
-1. [🚀 Getting Started](#getting-started)
-2. [📦 Managing Assets](#managing-assets)
-3. [🛠️ Description of the Tool](#description-of-the-tool)
-    - [🖌️ Grid Editor](#grid-editor)
-        - [🔧 Toolbar](#toolbar)
-        - [📊 Grid](#grid)
-        - [🔍 Inspector](#inspector)
-    - [🔀 Color2Object](#color2object)
-        - [🔢 Relation Color-Integer](#relation-color-integer)
-        - [📜 Relation Color-ScriptableObject](#relation-color-scriptableobject)
-    - [⚙️ Settings](#settings)
-        - [🌈 RGB Channels](#rgb-channels)
-4. [📖 How to Use Grid Editor](#how-to-use-grid-editor)
-    - [🎨 Color Selection](#color-selection)
-    - [🔧 Tools](#tools)
-        - [🖌️ Paint Tool](#paint-tool)
-        - [🔍 Inspect](#inspect)
-        - [🎯 Picking](#picking)
-5. [📦 How to Use Color2Object](#how-to-use-color2object)
-6. [⚙️ How to Use the Settings](#how-to-use-the-settings)
-    - [🔣 Color Matrix Type](#color-matrix-type)
-    - [🌈 Active (Red/Green/Blue) Channel](#active-redgreenblue-channel)
-7. [🔍 Explanation of How It Works Behind the Scenes](#explanation-of-how-it-works-behind-the-scenes)
-    - [🗺️ How the Grid Coordinates are Represented](#how-the-grid-coordinates-are-represented)
-    - [🔄 How the Data Association Works](#how-the-data-association-works)
-        - [🔧 From Tool to Sublayer](#from-tool-to-sublayer)
-        - [🔄 From Sublayer to Tool or for User Use](#from-sublayer-to-tool-or-for-user-use)
-
 ## **🚀 Getting Started**
 
 To begin using the Pixel Mapper, follow these steps:
