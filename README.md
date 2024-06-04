@@ -192,6 +192,30 @@ Meanwhile, a user who wants the data of a specific pixel (using coordinates) wil
     PixelPack<T> pixelPack = new PixelPack<T>(pixelLayers);
     PixelOutput<T> point = pixelPack.GetPixelOutput(1,4);
 
+### **🌈When i need to deactivate a RGB channel**
+
+The amount of association with:
+
+- Three channels active is: 16777216 colors
+- Two channels active is: 65536 color
+- One channel active is: 256 color
+
+Is rare to use 16777216 or 65536 colors to associate, so this give to use the unused channel value of each pixel as we please;
+
+> For example we deactivate the blue channel, and get some *PixelOutput<T>*, that contain the real color;
+>
+> We get two pixel A = RGB(0.5f, 0.4f, 1f) and B = RGB(0.5f, 0.4f, 0.5f)
+>
+> During association the two pixel look like this A = RGB(0.5f, 0.4f, 0f) and B = RGB(0.5f, 0.4f, 0f), so this will return the same value
+>
+> So for the association they are the same, but in reality the have blue channel with different value, imagine having the type on Vector3, the *PixelOutput<T>*s will contain:
+>
+> - Data A -> Vector3(3.0f, 2.0f, 3.0f) and RGB(0.5f, 0.4f, 1f)
+>
+> - Data B -> Vector3(3.0f, 2.0f, 3.0f) and RGB(0.5f, 0.4f, 0.5f)
+>
+> In this scenario the Red and Green can the ignored and focus on blue channel, and use the value of blue channel as scale, offset and ect... depend of the necessity of the user 
+
 ## TODO of README
 - Explain i can turn off a RGB channel and for what purpose
 - Explain how use the assets
