@@ -40,6 +40,8 @@ To begin using the Pixel Mapper, follow these steps:
 2. In the Unity window, go to "Assets" -> "Import Package" -> "Custom Package" and paste the Git repository URL to import the plugin.
 3. Create a new Pixel Mapper object by selecting 'Create > MatrixMapData' in the 'Assets' panel or by right-clicking in the inspector. This will launch a wizard to name the main asset, the first sub-asset, and set the grid size for all sub-assets.
 
+For a more detailed explanation on managing assets, refer to [Managing Assets](#managing-assets).
+
 ## **📦 Managing Assets**
 
 From here, you can manage your assets effectively:
@@ -55,6 +57,8 @@ From here, you can manage your assets effectively:
 - **🔘 Buttons Overview**: You'll see a list of buttons with the names of the sub-assets. Click on one to open the tool, or click '❌' to remove the sub-asset (at least one sub-asset must remain). There’s also a button for quick access to the last layer you opened.
 
 ![SubLayersExample](SubLayersExample.png)
+
+For a simpler overview, refer to [Getting Started](#getting-started).
 
 ## **🛠️ Description of the Tool**
 
@@ -77,11 +81,15 @@ The tool is divided into three main sections:
 
 ![Toolbar](GridEditorToolbar.png)
 
+For a more detailed explanation on how to use these tools, refer to [How to Use Grid Editor](#how-to-use-grid-editor).
+
 #### **📊 Grid**
 
 The grid is the main workspace where you view and draw pixels. When using the **Inspect** tool, the selected pixel is highlighted with a contrasting border.
 
 ![Grid](GridEditor.png)
+
+For more details on working with the grid, refer to [How to Use Grid Editor](#how-to-use-grid-editor).
 
 #### **🔍 Inspector**
 
@@ -101,11 +109,15 @@ The inspector panel shows the true color of the pixel regardless of any RGB chan
 
 In this panel, you can associate pixels with values of a selected type for the entire grid. All colors in the grid are included.
 
+For a simpler overview of the Color2Object panel, refer to [How to Use Color2Object](#how-to-use-color2object).
+
 ### **⚙️ Settings**
 
 There are some settings that can change the behaviour and representation of the tool.
 
 ![Settings](Settings.png)
+
+For more detailed explanations of the settings, refer to [How to Use the Settings](#how-to-use-the-settings).
 
 ## **📖 How to Use Grid Editor**
 
@@ -137,11 +149,15 @@ With this tool, you can pick the color of the selected pixel and transpose it to
 
 ![PickingAPixel](PickingAPixel.gif)
 
+For a simpler overview of these tools, refer to [Grid Editor](#grid-editor).
+
 ## **📦 How to Use Color2Object**
 
 Depending on the type selected for the Color-Object association, how you can modify it may differ, but fortunately, it works like a normal Unity inspector input field.
 
 The supported types are indicated in [Supported Type](SupportedType.md).
+
+For a more detailed explanation on the Color2Object panel, refer to [Color2Object](#color2object).
 
 ## **⚙️ How to Use the Settings**
 
@@ -157,6 +173,8 @@ This setting affects:
 - Disabling and resetting the channel of **Draw Color** affects **Color Preview**.
 - The channel deactivated in the settings will enable that channel in the inspector that allows it to be edited.
 - **Color2Object** will refresh the association with the new color, and the old association will be hidden until the channel is restored to its previous state.
+
+For a simpler overview of the settings, refer to [Settings](#settings).
 
 ## **🔍 Explanation of How It Works Behind the Scenes**
 
@@ -178,7 +196,9 @@ Once we click on **Save**, we parse the *object* byte by byte, resulting in an a
 
 For the conversion object->byte[], the type must have System.Serializable. For types that can't be natively serialized, I use a custom method to organize data for serialization.
 
-For example, a Vector3 will become float[3], which is natively serialized. In summary, Vector3 -> float[3] (surrogate) -> *object* -> byte[].
+For example, a Vector3 will
+
+ become float[3], which is natively serialized. In summary, Vector3 -> float[3] (surrogate) -> *object* -> byte[].
 
 #### **🔄 From Sublayer to Tool or for User Use**
 
@@ -188,11 +208,17 @@ For example, in the tool with a Vector3, byte[] is used to build an *object*. Ba
 
 Meanwhile, a user who wants the data of a specific pixel (using coordinates) will follow the same process: byte[] -> build *object* -> cast to surrogate (if needed) -> rebuild original type, and lastly, provide it to the player.
 
-Note: Retrieving the data requires specifying the type as Generic, which can differ from the type of the sublayer only if it
-
- can be cast; otherwise, it will give an error.
+Note: Retrieving the data requires specifying the type as Generic, which can differ from the type of the sublayer only if it can be cast; otherwise, it will give an error.
 
 Example: T must be a type that can cast the data of the type set in the settings.
 
     PixelPack<T> pixelPack = new PixelPack<T>(pixelLayers);
     PixelOutput<T> point = pixelPack.GetPixelOutput(1,4);
+
+## TODO of README
+- Explain how a grid of color work combined with Color2Object
+- Explain i can turn off a RGB channel and for what purpose
+- Explain how use the assets
+    - First using sub asset
+    - Later using main asset
+- Create a demo project with some examples
