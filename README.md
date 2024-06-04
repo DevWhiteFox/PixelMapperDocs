@@ -11,9 +11,9 @@ This guide covers the Pixel Mapper, a tool for mapping pixel values to data type
         - [🔧 Toolbar](#toolbar)
         - [📊 Grid](#grid)
         - [🔍 Inspector](#inspector)
-    - [:twisted_rightwards_arrows: Color2Object](#color2object)
-        - [:1234: Relation Color-Integer](#relation-color-integer)
-        - [📜 Relation Color-Scriptable](#relation-color-scriptable)
+    - [🔀 Color2Object](#color2object)
+        - [🔢 Relation Color-Integer](#relation-color-integer)
+        - [📜 Relation Color-ScriptableObject](#relation-color-scriptableobject)
     - [⚙️ Settings](#settings)
         - [🌈 RGB Channels](#rgb-channels)
 4. [📖 How to Use Grid Editor](#how-to-use-grid-editor)
@@ -22,6 +22,15 @@ This guide covers the Pixel Mapper, a tool for mapping pixel values to data type
         - [🖌️ Paint Tool](#paint-tool)
         - [🔍 Inspect](#inspect)
         - [🎯 Picking](#picking)
+5. [📦 How to Use Color2Object](#how-to-use-color2object)
+6. [⚙️ How to Use the Settings](#how-to-use-the-settings)
+    - [🔣 Color Matrix Type](#color-matrix-type)
+    - [🌈 Active (Red/Green/Blue) Channel](#active-redgreenblue-channel)
+7. [🔍 Explanation of How It Works Behind the Scenes](#explanation-of-how-it-works-behind-the-scenes)
+    - [🗺️ How the Grid Coordinates are Represented](#how-the-grid-coordinates-are-represented)
+    - [🔄 How the Data Association Works](#how-the-data-association-works)
+        - [🔧 From Tool to Sublayer](#from-tool-to-sublayer)
+        - [🔄 From Sublayer to Tool or for User Use](#from-sublayer-to-tool-or-for-user-use)
 
 ## **🚀 Getting Started**
 
@@ -52,7 +61,7 @@ From here, you can manage your assets effectively:
 The tool is divided into three main sections:
 
 - **🖌️ Grid Editor**: View and edit the grid.
-- **🎨 Color2Object**: Associate pixels with values of a selected type across the grid.
+- **🔀 Color2Object**: Associate pixels with values of a selected type across the grid.
 - **⚙️ Settings**: Configure the type associated with the pixel and specify which RGB channels to use.
 
 ### **🖌️ Grid Editor**
@@ -80,9 +89,9 @@ The inspector panel shows the true color of the pixel regardless of any RGB chan
 
 ![Inspector](InspectAPixel.gif)
 
-### **:twisted_rightwards_arrows: Color2Object**
+### **🔀 Color2Object**
 
-#### **:1234: Relation Color-Integer**
+#### **🔢 Relation Color-Integer**
 
 ![Color2Object](Color2ObjectWithInteger.png)
 
@@ -128,30 +137,30 @@ With this tool, you can pick the color of the selected pixel and transpose it to
 
 ![PickingAPixel](PickingAPixel.gif)
 
-## How to Use Color2Object
+## **📦 How to Use Color2Object**
 
 Depending on the type selected for the Color-Object association, how you can modify it may differ, but fortunately, it works like a normal Unity inspector input field.
 
 The supported types are indicated in [Supported Type](SupportedType.md).
 
-## How to Use the Settings
+## **⚙️ How to Use the Settings**
 
-### Color Matrix Type (to be renamed to Association Color-Type)
+### **🔣 Color Matrix Type**
 
 This setting affects Color2Object by determining the type associated with each color. Changing this setting will clear all previous associations, so change it only once to avoid losing the associations.
 
-### Active (Red/Green/Blue) Channel
+### **🌈 Active (Red/Green/Blue) Channel**
 
 This setting affects:
 
 - The representation of the color in the **Grid Editor**, excluding some channels.
 - Disabling and resetting the channel of **Draw Color** affects **Color Preview**.
-- The channel deactivated in the settings will enable that channel in the inspector that allow to be edited.
+- The channel deactivated in the settings will enable that channel in the inspector that allows it to be edited.
 - **Color2Object** will refresh the association with the new color, and the old association will be hidden until the channel is restored to its previous state.
 
-## Explanation of How It Works Behind the Scenes
+## **🔍 Explanation of How It Works Behind the Scenes**
 
-### How the Grid Coordinates are Represented
+### **🗺️ How the Grid Coordinates are Represented**
 
 The main reason is to work natively with Unity's coordinate system.
 
@@ -159,9 +168,9 @@ Like Unity, the Up direction is represented by the Y-axis from bottom to top, an
 
 The coordinate system is like Unity's P(X, Y) for the direction D(Right, Up).
 
-### How the Data Association Works
+### **🔄 How the Data Association Works**
 
-#### From Tool to Sublayer
+#### **🔧 From Tool to Sublayer**
 
 After finishing assigning a value to the association, the data is assigned as a C# *object*.
 
@@ -171,7 +180,7 @@ For the conversion object->byte[], the type must have System.Serializable. For t
 
 For example, a Vector3 will become float[3], which is natively serialized. In summary, Vector3 -> float[3] (surrogate) -> *object* -> byte[].
 
-#### From Sublayer to Tool or for User Use
+#### **🔄 From Sublayer to Tool or for User Use**
 
 This works like the "From Tool to Sublayer" process but in reverse.
 
@@ -179,16 +188,11 @@ For example, in the tool with a Vector3, byte[] is used to build an *object*. Ba
 
 Meanwhile, a user who wants the data of a specific pixel (using coordinates) will follow the same process: byte[] -> build *object* -> cast to surrogate (if needed) -> rebuild original type, and lastly, provide it to the player.
 
-Note: Retrieving the data requires specifying the type as Generic, which can differ from the type of the sublayer only if it can be cast; otherwise, it will give an error.
+Note: Retrieving the data requires specifying the type as Generic, which can differ from the type of the sublayer only if it
+
+ can be cast; otherwise, it will give an error.
 
 Example: T must be a type that can cast the data of the type set in the settings.
 
     PixelPack<T> pixelPack = new PixelPack<T>(pixelLayers);
     PixelOutput<T> point = pixelPack.GetPixelOutput(1,4);
-## TODO of README
-- Explain how a grid of color work combined with *Color2Object*
-- Explain i can turn off a RGB channel and for what purpose
-- Explain how use the assets
-  - First using sub asset
-  - Later using main asset
-- Create a demo project with some examples
