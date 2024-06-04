@@ -130,62 +130,61 @@ With this tool, you can pick the color of the selected pixel and transpose it to
 
 ## How to Use Color2Object
 
-Depending on the type selected for the Color-Object association may differ how you can modify it, but fortunately it works like a normal Unity inspector input field.
+Depending on the type selected for the Color-Object association, how you can modify it may differ, but fortunately, it works like a normal Unity inspector input field.
 
-The type supported is indicated in [Supported Type](SupportedType.md)
+The supported types are indicated in [Supported Type](SupportedType.md).
 
 ## How to Use the Settings
 
-### Color Matrix Type (to rename in Association Color-Type)
+### Color Matrix Type (to be renamed to Association Color-Type)
 
-This setting affect Color2Object what type is associate for each color, this will clear all previous association so change once this settings to avoid lose the associations.
+This setting affects Color2Object by determining the type associated with each color. Changing this setting will clear all previous associations, so change it only once to avoid losing the associations.
 
 ### Active (Red/Green/Blue) Channel
 
-This setting affect:
+This setting affects:
 
-- The rapresentation of the color of the **Grid Editor** that exclude some channel.
-- Will disable and reset the channel of **Draw Color** that affect **Color Preview**.
-- In the inspector will be enabled the channel deactivated to allow the editing.
-- **Color2Object** will refresh the association with the new color and the old association will hidden until restore the channel old state.
+- The representation of the color in the **Grid Editor**, excluding some channels.
+- Disabling and resetting the channel of **Draw Color** affects **Color Preview**.
+- The channel deactivated in the settings will enable that channel in the inspector that allow to be edited.
+- **Color2Object** will refresh the association with the new color, and the old association will be hidden until the channel is restored to its previous state.
 
-## Some explanation how work behind the scene
+## Explanation of How It Works Behind the Scenes
 
-### How the coordinate of the grid rappresent
+### How the Grid Coordinates are Represented
 
-The main reason is to to work nativelly the coordinate system of Unity.
+The main reason is to work natively with Unity's coordinate system.
 
-Like unity the Up is rappresented with the Y from bottom to up, and the Right is rappresented with X from left to right.
+Like Unity, the Up direction is represented by the Y-axis from bottom to top, and the Right direction is represented by the X-axis from left to right.
 
-The coordinate is like unity P(X, Y) for the direction D(Right, Up)
+The coordinate system is like Unity's P(X, Y) for the direction D(Right, Up).
 
-### How the data of association work
+### How the Data Association Works
 
-#### From tool to sublayer
+#### From Tool to Sublayer
 
-After finish assign a value to the association, the data is assigned as C#'s *object*;
+After finishing assigning a value to the association, the data is assigned as a C# *object*.
 
-Once we blick on **Save** we parse the *object* byte per byte that result as array of byte that allow to be serialize.
+Once we click on **Save**, we parse the *object* byte by byte, resulting in an array of bytes that can be serialized.
 
-The conversion object->byte[] the type require have System.Serialize, and for type that can't be nativelly serialize i use a custom way to organize data in order to serialize;
+For the conversion object->byte[], the type must have System.Serializable. For types that can't be natively serialized, I use a custom method to organize data for serialization.
 
-Example is Vector3 will become float[3] that is nativelly serialized, resumed is Vector3 -> float[3] (surrogate) -> *object* -> byte[]
+For example, a Vector3 will become float[3], which is natively serialized. In summary, Vector3 -> float[3] (surrogate) -> *object* -> byte[].
 
-#### From sublayer to Tool or to be used from user
+#### From Sublayer to Tool or for User Use
 
-This work like **From tool to sublayer** but in reverse.
+This works like the "From Tool to Sublayer" process but in reverse.
 
-Example with of happen in tool with a Vector3, byte[] is used to build an *object* and in **Color2Object** base on type in **Settings** create the right field and cast to the right type (or surrogate) and set the field with the value
+For example, in the tool with a Vector3, byte[] is used to build an *object*. Based on the type in **Settings**, **Color2Object** creates the appropriate field, casts it to the correct type (or surrogate), and sets the field with the value.
 
-Meanwhile the used that want the data of specific pixel (by using coordinate) will do the same thing byte[] -> build *object* -> casted to surrogate (is it's needed) -> rebuild orginal type and lastly given to player.
+Meanwhile, a user who wants the data of a specific pixel (using coordinates) will follow the same process: byte[] -> build *object* -> cast to surrogate (if needed) -> rebuild original type, and lastly, provide it to the player.
 
-Note: Retreive the data have to specify the type as Generic that can differt from type of sublayer only if can be casted, otherwise will give and error.
+Note: Retrieving the data requires specifying the type as Generic, which can differ from the type of the sublayer only if it can be cast; otherwise, it will give an error.
 
-Example: T must be a type that can cast the data of the type set in the settings
+Example: T must be a type that can cast the data of the type set in the settings.
 
     PixelPack<T> pixelPack = new PixelPack<T>(pixelLayers);
     PixelOutput<T> point = pixelPack.GetPixelOutput(1,4);
-
 ## TODO of README
 - Explain how a grid of color work combined with *Color2Object*
 - Explain i can turn off a RGB channel and for what purpose
