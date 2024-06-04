@@ -144,6 +144,8 @@ This setting affects:
 - The channel deactivated in the settings will enable that channel in the inspector that allows it to be edited.
 - **Color2Object** will refresh the association with the new color, and the old association will be hidden until the channel is restored to its previous state.
 
+> Note: The amount of channel that you can turn of is two, the third channel will not turn off, because the user have to to use al least a channel to edit the grid.
+
 For a simpler overview of the settings, refer to [Settings](#settings).
 
 ## **🔍 Explanation of How It Works Behind the Scenes**
@@ -158,6 +160,13 @@ The coordinate system is like Unity's P(X, Y) for the direction D(Right, Up).
 
 ### **🔄 How the Data Association Works**
 
+To get all different color for association, the tool iterate all the grid and collect unique color, for each color generate an input field for the type selected.
+Each field when edited will update the association list ready to be saved.
+
+> Example: IntegerField -> int -> Dictionary<Color, *object*> (int become *object* and insered as new value) 
+
+### **🔄 How Data of Association is saved and loaded**
+
 #### **🔧 From Tool to Sublayer**
 
 After finishing assigning a value to the association, the data is assigned as a C# *object*.
@@ -166,9 +175,7 @@ Once we click on **Save**, we parse the *object* byte by byte, resulting in an a
 
 For the conversion object->byte[], the type must have System.Serializable. For types that can't be natively serialized, I use a custom method to organize data for serialization.
 
-For example, a Vector3 will
-
- become float[3], which is natively serialized. In summary, Vector3 -> float[3] (surrogate) -> *object* -> byte[].
+> For example, a Vector3 will become float[3], which is natively serialized. In summary, Vector3 -> float[3] (surrogate) -> *object* -> byte[].
 
 #### **🔄 From Sublayer to Tool or for User Use**
 
@@ -178,15 +185,14 @@ For example, in the tool with a Vector3, byte[] is used to build an *object*. Ba
 
 Meanwhile, a user who wants the data of a specific pixel (using coordinates) will follow the same process: byte[] -> build *object* -> cast to surrogate (if needed) -> rebuild original type, and lastly, provide it to the player.
 
-Note: Retrieving the data requires specifying the type as Generic, which can differ from the type of the sublayer only if it can be cast; otherwise, it will give an error.
+> Note: Retrieving the data requires specifying the type as Generic, which can differ from the type of the sublayer only if it can be cast; otherwise, it will give an error.
 
-Example: T must be a type that can cast the data of the type set in the settings.
+> Example: T must be a type that can cast the data of the type set in the settings.
 
     PixelPack<T> pixelPack = new PixelPack<T>(pixelLayers);
     PixelOutput<T> point = pixelPack.GetPixelOutput(1,4);
 
 ## TODO of README
-- Explain how a grid of color work combined with Color2Object
 - Explain i can turn off a RGB channel and for what purpose
 - Explain how use the assets
     - First using sub asset
