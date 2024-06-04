@@ -11,8 +11,8 @@ This guide covers the Pixel Mapper, a tool for mapping pixel values to data type
         - [🔧 Toolbar](#toolbar)
         - [📊 Grid](#grid)
         - [🔍 Inspector](#inspector)
-    - [🎨 Color2Object](#color2object)
-        - [🎨 Relation Color-Integer](#relation-color-integer)
+    - [:twisted_rightwards_arrows: Color2Object](#color2object)
+        - [:1234: Relation Color-Integer](#relation-color-integer)
         - [📜 Relation Color-Scriptable](#relation-color-scriptable)
     - [⚙️ Settings](#settings)
         - [🌈 RGB Channels](#rgb-channels)
@@ -80,7 +80,7 @@ The inspector panel shows the true color of the pixel regardless of any RGB chan
 
 ![Inspector](InspectAPixel.gif)
 
-### **🎨 Color2Object**
+### **:twisted_rightwards_arrows: Color2Object**
 
 #### **:1234: Relation Color-Integer**
 
@@ -128,11 +128,65 @@ With this tool, you can pick the color of the selected pixel and transpose it to
 
 ![PickingAPixel](PickingAPixel.gif)
 
-## TODO of README
+## How to Use Color2Object
 
-- Explain how to use *Color2Object* and create a file with supported type
-- Explain what the settings affect the tool
-- Explain coordinate of the grid work
+Depending on the type selected for the Color-Object association may differ how you can modify it, but fortunately it works like a normal Unity inspector input field.
+
+The type supported is indicated in [Supported Type](SupportedType.md)
+
+## How to Use the Settings
+
+### Color Matrix Type (to rename in Association Color-Type)
+
+This setting affect Color2Object what type is associate for each color, this will clear all previous association so change once this settings to avoid lose the associations.
+
+### Active (Red/Green/Blue) Channel
+
+This setting affect:
+
+- The rapresentation of the color of the **Grid Editor** that exclude some channel.
+- Will disable and reset the channel of **Draw Color** that affect **Color Preview**.
+- In the inspector will be enabled the channel deactivated to allow the editing.
+- **Color2Object** will refresh the association with the new color and the old association will hidden until restore the channel old state.
+
+## Some explanation how work behind the scene
+
+### How the coordinate of the grid rappresent
+
+The main reason is to to work nativelly the coordinate system of Unity.
+
+Like unity the Up is rappresented with the Y from bottom to up, and the Right is rappresented with X from left to right.
+
+The coordinate is like unity P(X, Y) for the direction D(Right, Up)
+
+### How the data of association work
+
+#### From tool to sublayer
+
+After finish assign a value to the association, the data is assigned as C#'s *object*;
+
+Once we blick on **Save** we parse the *object* byte per byte that result as array of byte that allow to be serialize.
+
+The conversion object->byte[] the type require have System.Serialize, and for type that can't be nativelly serialize i use a custom way to organize data in order to serialize;
+
+Example is Vector3 will become float[3] that is nativelly serialized, resumed is Vector3 -> float[3] (surrogate) -> *object* -> byte[]
+
+#### From sublayer to Tool or to be used from user
+
+This work like **From tool to sublayer** but in reverse.
+
+Example with of happen in tool with a Vector3, byte[] is used to build an *object* and in **Color2Object** base on type in **Settings** create the right field and cast to the right type (or surrogate) and set the field with the value
+
+Meanwhile the used that want the data of specific pixel (by using coordinate) will do the same thing byte[] -> build *object* -> casted to surrogate (is it's needed) -> rebuild orginal type and lastly given to player.
+
+Note: Retreive the data have to specify the type as Generic that can differt from type of sublayer only if can be casted, otherwise will give and error.
+
+Example: T must be a type that can cast the data of the type set in the settings
+
+    PixelPack<T> pixelPack = new PixelPack<T>(pixelLayers);
+    PixelOutput<T> point = pixelPack.GetPixelOutput(1,4);
+
+## TODO of README
 - Explain how a grid of color work combined with *Color2Object*
 - Explain i can turn off a RGB channel and for what purpose
 - Explain how use the assets
