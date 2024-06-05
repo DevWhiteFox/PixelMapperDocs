@@ -200,7 +200,7 @@ The amount of association with:
 - Two channels active is: 65536 color
 - One channel active is: 256 color
 
-Is rare to use 16777216 or 65536 colors to associate, so this give to use the unused channel value of each pixel as we please;
+It is rare to use 16,777,216 or 65,536 colors, so this allows us to use the unused channel value of each pixel as we please.
 
 > For example we deactivate the blue channel, and get some *PixelOutput<T>*, that contain the real color;
 >
@@ -217,7 +217,6 @@ Is rare to use 16777216 or 65536 colors to associate, so this give to use the un
 > In this scenario the Red and Green can the ignored and focus on blue channel, and use the value of blue channel as scale, offset and ect... depend of the necessity of the user 
 
 ## TODO of README
-- Explain i can turn off a RGB channel and for what purpose
 - Explain how use the assets
     - First using sub asset
     - Later using main asset
