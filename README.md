@@ -216,8 +216,38 @@ It is rare to use 16,777,216 or 65,536 colors, so this allows us to use the unus
 >
 > In this scenario the Red and Green can the ignored and focus on blue channel, and use the value of blue channel as scale, offset and ect... depend of the necessity of the user 
 
+### **How use a sublayer asset**
+
+Example:
+
+Script that instantiate a prefab at xy position of grid but only if data is not 0, z in 1 or 0 depend of the blue channel value
+```csharp
+PixelPack<int> pack = new(sublayerAsset);
+        
+pack.IterateMatrix((x, y, color, data) =>
+{
+    if(data == 0) return;
+            
+    if(color.b > 0.5f) Instantiate(prefab, new Vector3(x, y, 0), Quaternion.identity);
+    else Instantiate(prefab, new Vector3(x, y, 1), Quaternion.identity);
+ });
+```
+
+### **How use the main asset**
+
+Same as using sublayer directlly, but is possible to get sublayer  by index
+```csharp
+PixelPack<int> pack = new(mainAsset[0]);
+        
+//Omitted for brevity
+```
+Or by using the name of sublayer
+```csharp
+PixelPack<int> pack = new(mainAsset["sublayerName"]);
+        
+//Omitted for brevity
+```
+
 ## TODO of README
-- Explain how use the assets
-    - First using sub asset
-    - Later using main asset
+- Quick explanation of PixelPack and PixelOutput
 - Create a demo project with some examples
