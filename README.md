@@ -223,6 +223,8 @@ Example:
 Script that instantiate a prefab at xy position of grid but only if data is not 0, z in 1 or 0 depend of the blue channel value
 ```csharp
 PixelPack<int> pack = new(sublayerAsset);
+
+PixelOutput<int> output = pack.GetPixelOutput(1, 5);
         
 pack.IterateMatrix((x, y, color, data) =>
 {
@@ -248,6 +250,17 @@ PixelPack<int> pack = new(mainAsset["sublayerName"]);
 //Omitted for brevity
 ```
 
+### **What are the purpose of PixelPack and PixelOutput**
+
+PixelPack is used to fetch, cache and then serve to the user the pixel data by requesting a specific coordinate or iterating completely.
+
+PixelOutput help PixelPack to have an instance of the result of association that hold the real color and the data associated and cache it if requested frenquenlty and the used can obtain it by *pack.GetPixelOutput(x, y)* that allow to get color and data.
+
+```csharp
+PixelOutput<int> output = pack.GetPixelOutput(1, 5);
+Color color = output.pixelColor;
+int data = output.data;
+```
+
 ## TODO of README
-- Quick explanation of PixelPack and PixelOutput
 - Create a demo project with some examples
