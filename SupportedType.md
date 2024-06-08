@@ -1,8 +1,6 @@
 | Built-in Type | C# Type | Notes |
 | --- | --- | --- |
-| Int16 | short | Short integer |
 | Int32 | int | Integer |
-| Int64 | long | Long integer |
 | Single | float | Floating-point number |
 | Double | double | Double-precision floating-point number |
 | Char | char | Character |
