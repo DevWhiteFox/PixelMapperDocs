@@ -262,5 +262,19 @@ Color color = output.pixelColor;
 int data = output.data;
 ```
 
+### *Common errors*
+
+To avoid confusion caused by errors that you believe stem from the tool but actually result from its usage, follow these guidelines.
+
+#### *Code*
+
+##### *PixelPack type don't match type of sublayer*
+
+If you have PixelPack<Vector3> but the sub layer is set with float the tool will trigger that the type are not compatible, but don't stop the rest of the code
+
+##### **User error in _IterateMatrix_**
+
+Sometimes, you might encounter an error indicating that the callback _**action**_ failed due to an error in the lambda function within the IterateMatrix function.
+
 ## TODO of README
 - Create a demo project with some examples
