@@ -216,7 +216,7 @@ It is rare to use 16,777,216 or 65,536 colors, so this allows us to use the unus
 >
 > In this scenario the Red and Green can the ignored and focus on blue channel, and use the value of blue channel as scale, offset and ect... depend of the necessity of the user 
 
-### **How use a sublayer asset**
+### **📦How use a sublayer asset**
 
 Example:
 
@@ -235,7 +235,7 @@ pack.IterateMatrix((x, y, color, data) =>
  });
 ```
 
-### **How use the main asset**
+### **📦How use the main asset**
 
 Same as using sublayer directlly, but is possible to get sublayer  by index
 ```csharp
@@ -262,19 +262,20 @@ Color color = output.pixelColor;
 int data = output.data;
 ```
 
-### *Common errors*
+### *❗Common errors*
 
 To avoid confusion caused by errors that you believe stem from the tool but actually result from its usage, follow these guidelines.
 
-#### *Code*
+#### *💁User Code*
 
-##### *PixelPack type don't match type of sublayer*
+##### *🚧PixelPack type don't match type of sublayer*
 
-If you have PixelPack<Vector3> but the sub layer is set with float the tool will trigger that the type are not compatible, but don't stop the rest of the code
+If you have a **PixelPack<Vector3>** but the sublayer is set with **float**, the tool will indicate that the types are not compatible. However, it will not stop the rest of the code from executing.
 
-##### **User error in _IterateMatrix_**
+##### **❗User error in _IterateMatrix_**
 
 Sometimes, you might encounter an error indicating that the callback _**action**_ failed due to an error in the lambda function within the IterateMatrix function.
 
-## TODO of README
-- Create a demo project with some examples
+## *🎨Samples*
+
+I created a project with several mini-projects that demonstrate different ways to use the tool as I conceived it. This means you can use it in more creative ways.
