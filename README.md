@@ -279,3 +279,5 @@ Sometimes, you might encounter an error indicating that the callback _**action**
 ## *🎨Samples*
 
 I created a project with several mini-projects that demonstrate different ways to use the tool as I conceived it. This means you can use it in more creative ways.
+
+[🔗Link to the project samples](https://github.com/DevWhiteFox/PixelMapperExamples/tree/main)
