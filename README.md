@@ -282,7 +282,7 @@ I created a project with several mini-projects that demonstrate different ways t
 
 [🔗Link to the project samples](https://github.com/DevWhiteFox/PixelMapperExamples/tree/main)
 
-## Unity version supported
+## *🚀Unity version supported*
 
 - 2022.3
-- 6000.0 (Previe w)
+- 6000.0 (Preview)
