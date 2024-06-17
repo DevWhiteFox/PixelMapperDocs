@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.3] - 2024-06-14
 
 ## Fixed
-- Fixed an error on delete sublayer during the loop that display sublayer buttons, so cache it and deleted outside loop
+- Fixed an error that occurred when deleting a sublayer during the loop that displays sublayer buttons. The sublayer is now cached and deleted outside the loop.
 
 ## [1.0.2] - 2024-06-10
 
