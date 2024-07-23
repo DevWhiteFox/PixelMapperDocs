@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Breaking
-- Some change on how i store data, created conversion script by Right-Click on PixelMapper or select, Assets > PixelMapper > Update Pixel Maps
+- Some change on how i store data, created conversion for each legacy asset
 
 ### Changed
 - Some optimization and cleanup from previous prototipe version
