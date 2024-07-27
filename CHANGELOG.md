@@ -5,13 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.1.0] - 2024-07-27
 
-### Breaking
-- Some change on how i store data, created conversion for each legacy asset
+### Breaking Changes
+- Updated PixelMaps/PixelLayer serialized data to improve performance, break the asset so i introduced a conversions for each legacy asset (support limited to this version only)
+  Each asset will display a warning if it is a legacy version and provide a "Rebuild" button to convert to the newer version.
+  WARNING: Converting will result in the loss of references to these assets. Manual re-assignment is required.
 
-### Changed
-- Some optimization and cleanup from previous prototipe version
+### Changes
+- Implemented optimizations and cleanup from the previous prototype version.
+- Optimized grid rendering: replaced individual VisualElement cells with a single Paint2D operation for the entire grid (rendered in segments to avoid vertex limits)
+- The new grid implementation significantly reduces code complexity, improving performance without requiring StyleColor caching for VisualElement
+- Simplified code for generating fields for Color2Object
 
 ## [1.0.3] - 2024-06-14
 
