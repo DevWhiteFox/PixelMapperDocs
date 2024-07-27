@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Breaking Changes
 - Updated PixelMaps/PixelLayer serialized data to improve performance, break the asset so i introduced a conversions for each legacy asset (support limited to this version only)
+- 
   Each asset will display a warning if it is a legacy version and provide a "Rebuild" button to convert to the newer version.
+  
   WARNING: Converting will result in the loss of references to these assets. Manual re-assignment is required.
 
 ### Changes
