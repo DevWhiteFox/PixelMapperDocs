@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Patch
 - Fixed paint tool not updating paint color when edited, copied or affected.
 - Fixed the generation of coordinates of cell for non-square grid.
+- Fixed the update of grid when cleared.
 
 ## [1.1.0] - 2024-07-27
 
