@@ -5,10 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2024-08-12
+
+### Patch
+- Fixed paint tool not updating paint color when edited, copied or affected.
+- Fixed the generation of coordinates of cell for non-square grid.
+
 ## [1.1.0] - 2024-07-27
 
 ### Breaking Changes
-- Updated PixelMaps/PixelLayer serialized data to improve performance, break the asset so i introduced a conversions for each legacy asset (support limited to this version only)
+- Updated PixelMaps/PixelLayer serialized data to improve performance, break the asset so i introduced a conversions for each legacy asset. (support limited to 1.1.x versions only)
   
   Each asset will display a warning if it is a legacy version and provide a "Rebuild" button to convert to the newer version.
   
@@ -16,9 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 - Implemented optimizations and cleanup from the previous prototype version.
-- Optimized grid rendering: replaced individual VisualElement cells with a single Paint2D operation for the entire grid (rendered in segments to avoid vertex limits)
-- The new grid implementation significantly reduces code complexity, improving performance without requiring StyleColor caching for VisualElement
-- Simplified code for generating fields for Color2Object
+- Optimized grid rendering: replaced individual VisualElement cells with a single Paint2D operation for the entire grid. (rendered in segments to avoid vertex limits)
+- The new grid implementation significantly reduces code complexity, improving performance without requiring StyleColor caching for VisualElement.
+- Simplified code for generating fields for Color2Object.
 
 ## [1.0.3] - 2024-06-14
 
@@ -28,15 +34,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.2] - 2024-06-10
 
 ### Fixed
-- To keep track asset reference, now PixelLayer and Session have a dedicated member and method
-- PixelPack cache the data instead of PixelOutput to avoid to use the cached real color of the first PixelOutput during fetch iteration
+- To keep track asset reference, now PixelLayer and Session have a dedicated member and method.
+- PixelPack cache the data instead of PixelOutput to avoid to use the cached real color of the first PixelOutput during fetch iteration.
 
 ### Removed
-- Removed Int16 (aka short) because don't have a dedicated field (and because manage number field as string and can clamp the value without do manually)
+- Removed Int16 (aka short) because don't have a dedicated field. (and because manage number field as string and can clamp the value without do manually)
 
 ## [1.0.0] - 2024-06-01
 
-1.0.0 Changelog is generated from git commits
+1.0.0 Changelog is generated from git commits.
 
 ### Added
 - Implemented tab support for managing multiple tools within a single window.
