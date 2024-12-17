@@ -4,13 +4,7 @@ This guide covers the Pixel Mapper, a tool for mapping pixel values to data type
 
 ## **🚀 Getting Started**
 
-To begin using the Pixel Mapper, follow these steps:
-
-1. Copy this Git repository URL: [PixelMapper](https://gitlab.com/davide.balan.official/pixelmapper.git).
-2. In the Unity window, go to "Assets" -> "Import Package" -> "Custom Package" and paste the Git repository URL to import the plugin.
-3. Create a new Pixel Mapper object by selecting 'Create > MatrixMapData' in the 'Assets' panel or by right-clicking in the inspector. This will launch a wizard to name the main asset, the first sub-asset, and set the grid size for all sub-assets.
-
-For a more detailed explanation on managing assets, refer to [Managing Assets](#managing-assets).
+> Building the Unity Store Page
 
 ## **📦 Managing Assets**
 
