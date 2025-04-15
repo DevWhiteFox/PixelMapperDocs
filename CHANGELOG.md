@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2024-08-12
+
+### Added
+- Added the 'Info Bar', a bar at the bottom of the 'Grid Editor' that displays information about the pixel the mouse is hovering over, such as its coordinates and actual color (in case a channel is deactivated).
+- Added for the 'Inspector' a way to close it in a conventional way, the X button.
+- The layer now keeps track of any changes you make. When you close the window, a panel will appear asking whether you want to save or discard the changes.
+- If you try to open a layer while another (or the same) layer window is already open, a panel will appear asking whether to cancel opening the new layer or discard the changes to proceed.
+
 ## [1.1.1] - 2024-08-12
 
 ### Patch
